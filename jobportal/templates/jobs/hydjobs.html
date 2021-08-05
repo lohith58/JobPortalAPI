@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jobportal-HydJobs</title>
+    <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+    <style type="text/css">
+    body{
+       background: url(https://images.unsplash.com/photo-1512665591-75fa7ba868d7?ixlib=rb%020.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9fff1ea450ba4c7242b1bd207630469f&auto=format&fit=crop&w=667&q=80);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hyderabad Jobs Information</h1>
+
+ <hr>
+{% if jobs_list %}
+<table id='tab'>
+<thead>
+<th>Date</th>
+<th>Company</th>
+ <th>Title</th>
+ <th>Eligibility</th>
+ <th>Address</th>
+ <th>Email</th>
+ <th>Phone Number</th>
+ </thead>
+ {%for job in jobs_list %}
+ <tr>
+ <td>{{job.date}}</td>
+ <td>{{job.company}}</td>
+ <td>{{job.title}}</td>
+ <td>{{job.eligibility}}</td>
+ <td>{{job.address}}</td>
+ <td>{{job.email}}</td>
+ <td>{{job.phonenumber}}</td>
+ </tr>
+ {% endfor %}
+ </table>
+ {%include 'testapp/pagination.html' with page=jobs_list%}
+ {%else %}
+ <h1>No Jobs Found in Hyderabad</h1>
+{% endif %}
+  </body>
+</html>

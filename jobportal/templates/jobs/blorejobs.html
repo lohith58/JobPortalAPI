@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jobportal-BangaloreJobs</title>
+    <link rel="stylesheet" href="{% static 'css/jobs.css' %}">
+
+  </head>
+  <body>
+    <br><br>
+    <h1>Bangalore Jobs Information</h1>
+ <hr><br><br><br><br><br><br><br>
+{% if jobs_list %}
+<table id='tab'>
+<thead>
+<th>Date</th>
+<th>Company</th>
+ <th>Title</th>
+ <th>Eligibility</th>
+ <th>Address</th>
+ <th>Email</th>
+ <th>Phone Number</th>
+ </thead>
+ {%for job in jobs_list %}
+ <tr>
+ <td>{{job.date}}</td>
+ <td>{{job.company}}</td>
+ <td>{{job.title}}</td>
+ <td>{{job.eligibility}}</td>
+ <td>{{job.address}}</td>
+ <td>{{job.email}}</td>
+ <td>{{job.phonenumber}}</td>
+ </tr>
+ {% endfor %}
+ </table>
+ {%include 'jobs/pagination.html' with page=jobs_list%}
+ {%else %}
+ <h1>No Jobs Found in Bangalore</h1>
+{% endif %}
+  </body>
+</html>
